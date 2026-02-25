@@ -1,16 +1,7 @@
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light;
   color: #1f2937;
   background: linear-gradient(135deg, #e0e7ff, #fdf2f8);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 * {
@@ -22,30 +13,14 @@ body {
   min-height: 100vh;
 }
 
-a {
-  font-weight: 500;
-  color: #6366f1;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #4f46e5;
-}
-
-h1 {
-  font-size: 2.4em;
-  line-height: 1.2;
-  margin-bottom: 12px;
-}
-
-input {
+input, select {
   padding: 10px 12px;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid #c7d2fe;
   outline: none;
-  font-size: 14px;
 }
 
-input:focus {
+input:focus, select:focus {
   border-color: #6366f1;
 }
 
@@ -53,21 +28,11 @@ button {
   border-radius: 8px;
   border: none;
   padding: 8px 14px;
-  font-size: 14px;
-  font-weight: 500;
-  font-family: inherit;
+  font-weight: 600;
   background-color: #6366f1;
   color: white;
   cursor: pointer;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
-
 button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 12px rgba(99, 102, 241, 0.3);
-}
-
-button:active {
-  transform: translateY(0);
-  box-shadow: none;
+  opacity: 0.9;
 }
