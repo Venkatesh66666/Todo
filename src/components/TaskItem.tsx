@@ -1,4 +1,5 @@
 import React from "react"
+import { Button } from "./ui/button"
 import type { Task } from "../types"
 
 type Props = {
@@ -9,6 +10,7 @@ type Props = {
   onDropReorder: (targetId: number) => void
 }
 
+
 function TaskItem({ task, onMove, onDelete, onDragStart, onDropReorder }: Props) {
   return (
     <div
@@ -18,42 +20,33 @@ function TaskItem({ task, onMove, onDelete, onDragStart, onDropReorder }: Props)
         e.dataTransfer.effectAllowed = "move"
         onDragStart(task.id, task.status)
       }}
+
       onDragOver={e => e.preventDefault()}
       onDrop={e => {
         e.stopPropagation()
         onDropReorder(task.id)
       }}
-      style={card}
+      className="mb-2 flex items-center justify-between gap-2 rounded-lg border border-slate-200 bg-white p-3 shadow-sm"
     >
-      <strong>{task.title}</strong>
-
-      <div style={{ display: "flex", gap: 6 }}>
+      
+      <strong className="break-words text-sm text-slate-900">{task.title}</strong>
+      <div className="flex shrink-0 gap-1">
         {task.status === "todo" && (
-          <button style={btnStart} onClick={() => onMove(task.id, "inprogress")}>Start</button>
+          <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700" onClick={() => onMove(task.id, "inprogress")}>
+            Start
+          </Button>
         )}
         {task.status === "inprogress" && (
-          <button style={btnDone} onClick={() => onMove(task.id, "completed")}>Complete</button>
+          <Button size="sm" className="bg-sky-600 hover:bg-sky-700" onClick={() => onMove(task.id, "completed")}>
+            Complete
+          </Button>
         )}
-        <button style={btnDel} onClick={() => onDelete(task.id)}>Delete</button>
+        <Button size="sm" variant="destructive" onClick={() => onDelete(task.id)}>
+          Delete
+        </Button>
       </div>
     </div>
   )
 }
 
 export default React.memo(TaskItem)
-
-const card: React.CSSProperties = {
-  background: "#fff",
-  padding: 10,
-  borderRadius: 10,
-  marginBottom: 10,
-  boxShadow: "0 6px 14px rgba(0,0,0,0.08)",
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  gap: 8
-}
-
-const btnStart: React.CSSProperties = { background: "#22c55e", color: "#fff" }
-const btnDone: React.CSSProperties = { background: "#0ea5e9", color: "#fff" }
-const btnDel: React.CSSProperties = { background: "#ef4444", color: "#fff" }
