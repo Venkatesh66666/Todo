@@ -125,6 +125,7 @@ export default function App() {
           {!prog.length && !noResults && <Empty text="Drag a task here" />}
         </div>
 
+
         <div className={columnClass} onDrop={e => onDropOnColumn("completed", e)} onDragOver={e => e.preventDefault()}>
           <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-600">Completed</h3>
           {done.map(task => (
